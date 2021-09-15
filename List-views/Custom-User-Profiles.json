@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/tile-formatting.schema.json",
+  "height": 200,
+  "width": 200,
+  "hideSelection": true,
+  "fillHorizontally": true,
+  "formatter": {
+    "elmType": "div",
+    "defaultHoverField": "[$Person]",
+    "attributes": {
+      "class": "sp-card-container"
+    },
+    "children": [
+      {
+        "elmType": "button",
+        "attributes": {
+          "class": "sp-card-defaultClickButton",
+          "role": "presentation"
+        },
+        "customRowAction": {
+          "action": "defaultClick"
+        }
+      },
+      {
+        "elmType": "div",
+        "attributes": {
+          "class": "ms-bgColor-white sp-css-borderColor-neutralLight sp-card-borderHighlight sp-card-subContainer"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "attributes": {
+              "class": "sp-card-previewColumnContainer"
+            },
+            "style": {
+              "height": "108px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "attributes": {
+                  "class": "sp-card-imageContainer"
+                },
+                "children": [
+                  {
+                    "elmType": "div",
+                    "attributes": {
+                      "class": "ms-bgColor-neutralLight sp-card-imagePreviewBackground"
+                    },
+                    "children": [
+                      {
+                        "elmType": "img",
+                        "style": {
+                          "border-radius": "50%",
+                          "object-fit": "cover",
+                          "height": "124px",
+                          "margin-top": "4px"
+                        },
+                        "attributes": {
+                          "src": "=if([$Picture] == '', 'https://outlook.office.com/owa/service.svc/s/GetPersonaPhoto?UA=0&size=HR96x96&email=' + '[$Person.email]', [$Picture.serverUrl] + [$Picture.serverRelativeUrl])",
+                          "title": "[$Picture.fileName]",
+                          "class": "sp-card-imagePreview"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "elmType": "div",
+            "attributes": {
+              "class": "sp-card-displayColumnContainer"
+            },
+            "children": [
+              {
+                "elmType": "p",
+                "attributes": {
+                  "title": "[$Name]",
+                  "class": "ms-fontColor-neutralPrimary sp-card-content sp-card-highlightedContent"
+                },
+                "txtContent": "=if ([$Name] == '', '[$Person.title]', [$Name])"
+              }
+            ]
+          },
+          {
+            "elmType": "div",
+            "attributes": {
+              "class": "sp-card-lastTextColumnContainer"
+            },
+            "children": [
+              {
+                "elmType": "p",
+                "attributes": {
+                  "title": "[$Title]",
+                  "class": "ms-fontColor-neutralPrimary sp-card-content "
+                },
+                "txtContent": "=if ([$Title] == '', '[$Person.jobTitle]' +', ' + '[$Person.department]', [$Title])"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
